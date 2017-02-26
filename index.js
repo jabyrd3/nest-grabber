@@ -54,7 +54,7 @@ const auth = () =>{
   // oauth login page, fills out the form, and hits the submit button. The
   // nest app registered in their interface has a redirect url which should
   // be localhost:3000/auth/nest/callback for this script to work.
-  return new Promise((resolve, reject)=>{
+  return new Promise((resolve, reject) => {
     // auth if no token cached
     const nightmare = new Nightmare({show: false, webPreferences:{images: false}});
     app.get('/auth/nest/callback', function (req, res) {
@@ -110,8 +110,8 @@ const getPics = () => {
 
 // control flow
 hydrateCache().then(getPics).catch((err)=>{
-  console.warn('authing: ', err);
-  auth.then(getPics).catch(err=>{
+  console.warn('authing: ', err.code);
+  auth().then(getPics).catch(err=>{
     throw err;
   })
 });
