@@ -56,7 +56,7 @@ const auth = () =>{
   // be localhost:3000/auth/nest/callback for this script to work.
   return new Promise((resolve, reject)=>{
     // auth if no token cached
-    const nightmare = new Nightmare({show:true, webPreferences:{images: false}});
+    const nightmare = new Nightmare({show: false, webPreferences:{images: false}});
     app.get('/auth/nest/callback', function (req, res) {
       console.log('auth redirect caught in server');
       myNestOauth2.connect(req.query.code).then(retToken =>{
