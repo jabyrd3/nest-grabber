@@ -64,7 +64,7 @@ const auth = () =>{
         console.log('authtoken: ', retToken);
         fs.writeFile('.token_cache', JSON.stringify({token, dateObtained: Date.now()}), 'utf8', ()=>{
           console.log('token cached for later use');
-          nightmare.end();
+          nightmare.halt();
           server.close();
           resolve();
         });
